@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVA Power Dialers - Master Cold Calling</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+        }
+
+        /* Allstate Blue: #003DA5, Dark Blue: #002d7a */
+        
+        header {
+            background: linear-gradient(135deg, #003DA5 0%, #002d7a 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e0e0e0;
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #003DA5;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #003DA5;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #002d7a;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #003DA5 0%, #002d7a 100%);
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #003DA5;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-top: 4px solid #003DA5;
+            transition: transform 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #003DA5;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .content-section {
+            background: #f8f9fa;
+        }
+
+        .content-section:nth-child(even) {
+            background: white;
+        }
+
+        .week-item {
+            background: white;
+            border-left: 4px solid #003DA5;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .week-item h4 {
+            color: #003DA5;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            background: #003DA5;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+        }
+
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #003DA5 0%, #002d7a 100%);
+            border-radius: 10px;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            overflow: hidden;
+        }
+
+        .image-placeholder canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">CVA Power Dialers</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#step1">Step 1</a></li>
+                <li><a href="#step2">Step 2</a></li>
+                <li><a href="#step3">Step 3</a></li>
+                <li><a href="#step4">Step 4</a></li>
+                <li><a href="#step5">Step 5</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HOME -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Welcome to CVA Power Dialers</h1>
+                <p>Master the art of cold calling. Transform from order-taker to appointment-setter. This is your roadmap to becoming a top-performing telemarketer at Chris Verdaguer Agency.</p>
+                <a href="#step1" class="cta-button">Start Your Journey</a>
+            </div>
+        </section>
+
+        <!-- INTRO CONTENT -->
+        <section class="content-section">
+            <div class="container">
+                <h2>The Cold Calling Reality</h2>
+                <div class="image-placeholder">
+                    <canvas id="introCanvas"></canvas>
+                </div>
+                <p>Cold calling isn't easy. You're going to hear "no" more than "yes." You're going to get hung up on. You're going to have days where nothing seems to work.</p>
+                <p>But here's the thing: <span class="highlight">the best telemarketers aren't born—they're built.</span></p>
+                <p>Every rep who's crushing it right now started exactly where you are. They learned the system. They practiced. They got better. And now they're the ones setting up our producers for easy wins.</p>
+                
+                <h3>The 5-Step System</h3>
+                <p>We've broken down everything you need to know into 5 clear steps. Master these, and you'll transform your results.</p>
+
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Mastering the Opening</h3>
+                        <p>The first 10 seconds determine everything. Learn how to hook them immediately.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Handling Objections</h3>
+                        <p>Every objection has a response. Know them cold and you'll never lose control.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Recognizing the Right Moment</h3>
+                        <p>Know when to transfer, how to qualify, and how to set up your producers for success.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3>Being Your Own Critic</h3>
+                        <p>Record, review, improve. The best reps constantly refine their approach.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">5</div>
+                        <h3>The Long Game</h3>
+                        <p>Protect your energy. Track your numbers. Stay consistent. This is how you win.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 1 -->
+        <section id="step1" class="content-section">
+            <div class="container">
+                <h2>Step 1: Mastering the Opening</h2>
+                <div class="image-placeholder">
+                    <canvas id="step1Canvas"></canvas>
+                </div>
+                <p>You have 10 seconds—maybe less—before someone decides whether to keep listening or hang up. Your opening determines everything.</p>
+
+                <div class="week-item">
+                    <h4>Week 1: The Perfect Opening</h4>
+                    <p><strong>The Problem:</strong> "Hi, I'm calling from Allstate about your insurance needs…" <em>Click.</em></p>
+                    <p><strong>What Works:</strong> "Hi [Name], this is [Your Name] with Allstate. Quick question—when's the last time someone actually reviewed your coverage to make sure you're not overpaying?"</p>
+                    <p><strong>Why:</strong> You asked a question that engages their brain instead of triggering auto-reject. You led with THEIR benefit, not your product.</p>
+                </div>
+
+                <div class="week-item">
+                    <h4>Week 2: Voice and Tone</h4>
+                    <p><strong>The Formula:</strong></p>
+                    <ul>
+                        <li>Pace: Slightly slower than normal (shows confidence)</li>
+                        <li>Tone: Warm but professional</li>
+                        <li>Energy: Calm and steady, not hyped up</li>
+                    </ul>
+                    <p>Speak like you're calling a neighbor with genuinely helpful information. You're not begging for business—you're offering something valuable.</p>
+                </div>
+
+                <div class="week-item">
+                    <h4>Week 3: Building Rapport Fast</h4>
+                    <p><strong>Quick Rapport Builders:</strong></p>
+                    <ul>
+                        <li>"How's the weather treating you in [City] today?"</li>
+                        <li>"I know you're busy, so I'll be quick—appreciate you picking up."</li>
+                        <li>If they mention kids: "Oh, busy morning! I won't keep you long."</li>
+                    </ul>
+                    <p><strong>The Key:</strong> Keep it brief (15-30 seconds MAX), then pivot: "Alright, let me get to why I called..."</p>
+                </div>
+
+                <div class="week-item">
+                    <h4>Week 4: Asking the Right Questions</h4>
+                    <p><strong>Questions That Work:</strong></p>
+                    <ul>
+                        <li>"What's your biggest concern when it comes to your current coverage?"</li>
+                        <li>"If you could change one thing about your insurance, what would it be?"</li>
+                        <li>"When's the last time you reviewed your policy to make sure it still fits your life?"</li>
+                    </ul>
+                    <p>When people answer questions, they start thinking about their situation. That's when they realize they might actually need help.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 2 -->
+        <section id="step2" class="content-section">
+            <div class="container">
+                <h2>Step 2: Handling Objections</h2>
+                <div class="image-placeholder">
+                    <canvas id="step2Canvas"></canvas>
+                </div>
+                <p>Objections aren't rejections—they're opportunities. Every objection has a proven response. Learn them, and you'll never lose control of a call.</p>
+
+                <div class="week-item">
+                    <h4>Week 5: "I Already Have Insurance"</h4>
+                    <p><strong>Your Response:</strong> "That's great! Most people do. Quick question—when's the last time someone actually reviewed it with you to make sure you're getting the best rate and coverage?"</p>
+                    <p><strong>If They Engage:</strong> "All I need is about 60 seconds to ask a few quick questions, then I can connect you with one of our licensed specialists who can give you an actual quote. If it saves you money, great. If not, at least you'll know. Fair enough?"</p>
+                </div>
+
+                <div class="week-item">
+                    <h4>Week 6: "I Need to Talk to My Spouse"</h4>
+                    <p><strong>Your Response:</strong> "Totally makes sense—big decisions like this should be made together. Here's what I'd suggest: let me ask you a few quick questions to see if this is even worth both of you looking at. If it is, I can schedule a time for one of our specialists to call when you're both available. Sound good?"</p>
+                    <p><strong>Follow-Up:</strong> "What's a good day and time when you and your spouse are both free for a 10-minute call?"</p>
+                    <p>Now you've got a scheduled callback with both decision-makers instead of a dead lead.</p>
+                </div>
+
+                <div class="week-item">
+                    <h4>Week 7: "I'm Too Busy Right Now"</h4>
+                    <p><strong>Your Response:</strong> "Totally understand—I caught you at a bad time. When's a better time for me to call back? Morning or afternoon work better for you?"</p>
+                    <p><strong>If They Hesitate:</strong> "No worries at all. Let me ask you this real quick before I let you go—are you at least open to reviewing your insurance at some point, or are you pretty locked in with who you've got?"</p>
+                    <p>Now you know if this lead is worth following up on or if you should move on.</p>
+                </div>
+
+                <div class="week-item">
+                    <h4>Week 8: "That's Too Expensive"</h4>
+                    <p><strong>Your Response:</strong> "I totally get that—nobody wants to overpay. Here's the thing though: you haven't even gotten a quote yet, so you don't actually know what it'll cost. Our specialists are really good at finding discounts and bundles that most people don't know about. What if I connect you with someone who can give you real numbers in about 5 minutes? If it's not competitive, no harm done. Sound fair?"</p>
+                    <p><strong>Alternative:</strong> "Let me ask you this: if we could save you even $20-30 a month, would that be worth a quick call?"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 3 -->
+        <section id="step3" class="content-section">
+            <div class="container">
+                <h2>Step 3: Recognizing the Right Moment</h2>
+                <div class="image-placeholder">
+                    <canvas id="step3Canvas"></canvas>
+                </div>
+                <p>Your job isn't to close the sale—it's to recognize when someone's ready and execute a flawless transfer. Miss the signal, and you lose them.</p>
+
+                <div class="week-item">
+                    <h4>Week 9: Transfer-Ready Signals</h4>
+                    <p><strong>Listen For:</strong></p>
+                    <ul>
+                        <li>"How does this work?"</li>
+                        <li>"What information would I need?"</li>
+                        <li>"How long does it take to get a quote?"</li>
+                        <li>"What kind of discounts do you offer?"</li>
+                        <li>Long pauses where they're thinking it through</li>
+                    </ul>
+                    <p><strong>What To Do:</strong> Answer briefly, then move toward the transfer.</p>
+                    <p><strong>Example:</strong> "Great question—we've got tons of discounts, but it depends on your situation. That's exactly what our specialist will go over with you. Let me grab a few quick details and I'll get you connected right now. Sound good?"</p>
+                </div>
+
+                <div class="week-item">
+                    <h4>Week 10: Qualifying Questions</h4>
+                    <p><strong>What You Need to Know:</strong></p>
+                    <ul>
+                        <li>Do they currently have insurance?</li>
+                        <li>Are they open to comparing rates?</li>
+                        <li>Do they need spouse involved?</li>
+                        <li>What's their timeline?</li>
+                    </ul>
+                    <p><strong>Questions That Qualify:</strong></p>
+                    <ul>
+                        <li>"Are you currently insured, or shopping for new coverage?"</li>
+                        <li>"If we could save you money without sacrificing coverage, is that something you'd want to explore?"</li>
+                        <li>"Are you the main decision-maker on this, or would your spouse need to be involved?"</li>
+                        <li>"If the numbers make sense, how soon would you want to make a change?"</li>
+                    </ul>
+                </div>
+
+                <div class="week-item">
+                    <h4>Week 11: Executing the Warm Transfer</h4>
+                    <p><strong>Step 1: Set the Expectation</strong></p>
+                    <p>"Alright [Name], based on what you've told me, I think we can definitely help. I'm going to connect you with [Specialist Name], one of our licensed agents. They'll walk you through your options and get you an actual quote. I'll stay on the line to introduce you. Sound good?"</p>
+                    
+                    <p><strong>Step 2: Brief the Specialist (on hold)</strong></p>
+                    <p>"Hey [Specialist], I've got [Lead Name] on the line. They're currently with [Current Provider], paying around $[X]/month. They're interested in seeing if we can beat that. Open to bundling home and auto. Ready for them?"</p>
+                    
+                    <p><strong>Step 3: Make the Introduction</strong></p>
+                    <p>"[Lead Name], meet [Specialist Name]. [Specialist], this is [Lead Name]. I'll let you two take it from here. Good luck!"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 4 -->
+        <section id="step4" class="content-section">
+            <div class="container">
+                <h2>Step 4: Being Your Own Critic</h2>
+                <div class="image-placeholder">
+                    <canvas id="step4Canvas"></canvas>
+                </div>
+                <p>The best telemarketers don't just make calls—they study them. They catch their own mistakes before anyone else does. They refine, adjust, and get better every single day.</p>
+
+                <div class="week-item">
+                    <h4>Week 12: Recording and Reviewing Your Calls</h4>
+                    <p><strong>How To Do It:</strong></p>
+                    <ul>
+                        <li>Record 3-5 calls per day (with permission)</li>
+                        <li>Listen back at the end of your shift</li>
+                        <li>Take notes on what worked and what didn't</li>
+                    </ul>
+                    <p><strong>What To Listen For:</strong></p>
+                    <ul>
+                        <li>Did you sound confident or tentative?</li>
+                        <li>Did you ask for permission when you shouldn't have?</li>
+                        <li>Did you miss a transfer-ready signal?</li>
+                        <li>Did you talk too much after they were ready?</li>
+                    </ul>
+                    <p><strong>The Key:</strong> Be honest with yourself. If you wouldn't want to talk to you, fix it.</p>
+                </div>
+
+                <div class="week-item">
+                    <h4>Week 13: Identifying What's Working</h4>
+                    <p><strong>Track These Patterns:</strong></p>
+                    <ul>
+                        <li>Which opening lines get people to engage?</li>
+                        <li>Which objection responses actually move the conversation forward?</li>
+                        <li>What time of day do you get the most pickups?</li>
+                        <li>Which questions get people talking vs. shutting down?</li>
+                    </ul>
+                    <p><strong>The Rule:</strong> Double down on what's working. Stop doing what's not.</p>
+                </div>
+
+                <div class="week-item">
+                    <h4>Week 14: Self-Coaching</h4>
+                    <p><strong>Catch These Bad Habits Early:</strong></p>
+                    <ul>
+                        <li>Asking for permission: "Is it okay if I...?"</li>
+                        <li>Offering to send quotes instead of transferring</li>
+                        <li>Talking too fast when you're nervous</li>
+                        <li>Saying "um" or "uh" too much</li>
+                        <li>Apologizing for calling</li>
+                    </ul>
+                    <p><strong>How To Fix Them:</strong> Every time you catch yourself, pause and reframe. The more you catch yourself, the faster the habit breaks.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 5 -->
+        <section id="step5" class="content-section">
+            <div class="container">
+                <h2>Step 5: The Long Game</h2>
+                <div class="image-placeholder">
+                    <canvas id="step5Canvas"></canvas>
+                </div>
+                <p>Cold calling is a grind. If you don't protect your energy and track your progress, you'll burn out. Here's how to stay sharp for the long haul.</p>
+
+                <div class="week-item">
+                    <h4>Week 15: Mindset and Energy Management</h4>
+                    <p><strong>The Truth:</strong> Most "no's" aren't about you. They're about timing, budget, loyalty, or just a bad day. Don't take it personally.</p>
+                    
+                    <p><strong>How to Protect Your Mindset:</strong></p>
+                    <ul>
+                        <li><strong>Track your wins:</strong> At the end of each day, write down 3 things that went well</li>
+                        <li><strong>Take breaks:</strong> Don't grind for 3 hours straight. Take a 5-minute walk between call blocks</li>
+                        <li><strong>Reframe rejection:</strong> If your transfer rate is 1 in 20, every "no" brings you closer to a "yes"</li>
+                        <li><strong>Celebrate the process:</strong> Did you handle an objection well? Did you stay calm when someone was rude? That's progress</li>
+                    </ul>
+                    
+                    <p><strong>The Real Skill:</strong> Learning how to shake off a bad call in 10 seconds so it doesn't ruin the next one.</p>
+                </div>
+
+                <div class="week-item">
+                    <h4>Week 16: Tracking Your Metrics</h4>
+                    <p><strong>What to Track:</strong></p>
+                    
+                    <p><strong>1. Dials to Conversations Ratio</strong><br>
+                    How many dials does it take to get someone on the phone? If it's too high, your list might be bad or your timing is off.</p>
+                    
+                    <p><strong>2. Conversations to Qualified Leads Ratio</strong><br>
+                    How many conversations turn into actual qualified transfers? If this is low, you're not asking the right questions or handling objections well.</p>
+                    
+                    <p><strong>3. Qualified Leads to Transfers Ratio</strong><br>
+                    How many qualified leads actually get transferred? If this is low, you're losing them at the finish line.</p>
+                    
+                    <p><strong>4. Time of Day Performance</strong><br>
+                    Are you more effective in the morning or afternoon? Do people answer more at certain times? Adjust your schedule accordingly.</p>
+                    
+                    <p><strong>How to Use This Data:</strong> Review your numbers every week. If your dials-to-conversations ratio is low, work on your opening. If your conversations-to-qualified ratio is low, work on objection handling. If your qualified-to-transfer ratio is low, work on recognizing the right moment.</p>
+                    
+                    <p><strong>The Goal:</strong> Identify your weakest link and fix it. One improvement in the right area can double your results.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL SECTION -->
+        <section class="content-section" style="background: linear-gradient(135deg, #003DA5 0%, #002d7a 100%); color: white;">
+            <div class="container" style="text-align: center;">
+                <h2 style="color: white;">You've Got the System. Now Execute.</h2>
+                <p style="font-size: 1.3rem;">These 5 steps aren't theory—they're exactly what the top telemarketers at CVA do every single day. Master them, and you'll transform your results.</p>
+                <p style="font-size: 1.3rem; margin-top: 2rem;"><strong>Remember:</strong> Every rep who's crushing it right now started exactly where you are. They learned the system. They practiced. They got better.</p>
+                <p style="font-size: 1.5rem; margin-top: 2rem; font-weight: bold;">Now it's your turn.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Chris Verdaguer Agency. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Generate abstract geometric patterns for each section
+        function drawPattern(canvasId, colors) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            // Draw gradient background
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, colors[0]);
+            gradient.addColorStop(1, colors[1]);
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw geometric shapes
+            ctx.globalAlpha = 0.3;
+            for (let i = 0; i < 15; i++) {
+                ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const size = Math.random() * 100 + 50;
+                
+                if (Math.random() > 0.5) {
+                    ctx.fillRect(x, y, size, size);
+                } else {
+                    ctx.beginPath();
+                    ctx.arc(x, y, size/2, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+        }
+
+        // Initialize all patterns
+        window.addEventListener('load', () => {
+            const allstateBlue = '#003DA5';
+            const darkBlue = '#002d7a';
+            const white = '#ffffff';
+            const lightBlue = '#4a90e2';
+            
+            drawPattern('introCanvas', [allstateBlue, darkBlue, lightBlue, white]);
+            drawPattern('step1Canvas', [allstateBlue, lightBlue, white]);
+            drawPattern('step2Canvas', [darkBlue, allstateBlue, lightBlue]);
+            drawPattern('step3Canvas', [allstateBlue, white, lightBlue]);
+            drawPattern('step4Canvas', [darkBlue, lightBlue, allstateBlue]);
+            drawPattern('step5Canvas', [allstateBlue, darkBlue, white]);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
